@@ -23,6 +23,6 @@ setup(
     },
     zip_safe=False,
     package_data={
-        'dbotu_q2': ['dbotu_q2/citations.bib']
+        'dbotu_q2': ['citations.bib']
     }
 )

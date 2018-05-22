@@ -1,0 +1,37 @@
+package:
+  name: dbotu_q2
+  version: 2018.4.0
+
+source:
+  path: ../
+
+# make noarch, architecture-independent
+build:
+    noarch: generic
+
+# Add bioconda channel for biom
+extra:
+  channels:
+    - conda-forge
+    - bioconda
+
+requirements:
+
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    # QIIME 2 things for the setup
+    - qiime2 >=2018.4
+    - q2-types
+    # Other modules used in the actual code
+    - scikit-bio
+    - pandas
+    - dbotu
+
+about:
+  home: https://github.com/cduvallet/q2-dbotu
+  license: BSD-3-Clause
+  license_family: BSD

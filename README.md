@@ -4,9 +4,15 @@ QIIME 2 plugin for distribution-based clustering
 
 # Installation
 
-This plugin is not yet conda-installable.
+Distribution-based clustering is available on conda:
 
-To install it, first clone or download this repo to your computer, activate your qiime environment, and then run:
+```
+conda install -c cduvallet dbotu_q2
+```
+
+Note that you need the April 2018 QIIME 2 release (version `2018.4`) or later for this plugin to work.
+
+If that doesn't work, you can clone or download this repo to your computer, activate your qiime environment, and then run:
 
 ```
 python setup.py install
@@ -19,7 +25,7 @@ From within a QIIME 2 [environment](https://docs.qiime2.org/2018.4/install/nativ
 
 ```
 qiime dbotu-q2 call-otus \
-	--i-table test_data/counts.qza \
+	--i-table test_data/counts.transpose.qza \
 	--i-sequences test_data/seq.qza \
 	--o-representative-sequences dbotu_seqs.qza \
 	--o-dbotu-table dbotu_table.qza
@@ -56,8 +62,9 @@ qiime tools import \
 
 # To do
 
-- make conda-installable     
 - output membership info          
     - first attempt will be just to print membership to stdout     
     - in the future, will want to define a new file format and write membership to that      
     - in the more distant future, perhaps there could even be a way to visualize that membership       
+
+_Small semantic note: the repo is called q2-dbotu to keep in line with other qiime 2 plugin repo names, but the function is called dbotu_q2 so that it (1) does not conflict with the existing pip package called `dbotu` and (2) shows up alphabetically under `dbotu` which is where I assume most mortal humans will be looking for it in the qiime plugin listings. Sorry for any confusion (and I assure you it has confused me more than you!)_

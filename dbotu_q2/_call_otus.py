@@ -25,16 +25,12 @@ def call_otus(table: pd.DataFrame,
     '''
     Read in input files, call OTUs, and return output feature table.
 
-    seq_table_fh: filehandle
-      sequence count table, tab-separated
-    fasta_fn: str
-      sequences fasta filename
-    output_fh: filehandle
-      place to write main output OTU table
+    table: pandas Dataframe
+      sequence count table
+    sequences: DNAFASTAFormat
+      sequences fasta
     gen_crit, abund_crit, pval_crit: float
       threshold values for genetic criterion, abundance criterion, and distribution criterion (pvalue)
-    log, membership, debug: filehandles
-      places to write supplementary output
     '''
 
     # ensure valid argument values
