@@ -1,6 +1,8 @@
 # q2-dbotu
 
-QIIME 2 plugin for distribution-based clustering
+QIIME 2 plugin for distribution-based clustering.
+
+To learn more about distribution-based clustering, check out the [original publication](http://dx.doi.org/10.1128/AEM.00342-13) or the [python implementation, dbOTU3](https://github.com/swo/dbotu3). This plugin is essentially a QIIME 2 wrapper around this new implementation.
 
 # Installation
 
