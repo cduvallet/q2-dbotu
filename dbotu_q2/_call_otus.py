@@ -46,14 +46,19 @@ def call_otus(table: pd.DataFrame,
     records = SeqIO.index(str(sequences), 'fasta')
 
     # generate the caller object
-    caller = dbotu.DBCaller(table, records,
+    # Note: the dbotu code needs sequences in rows and samples in columns.
+    # qiime feature tables have sequences in columns and samples in rows.
+    # need to transpose the table when calling dbotu caller and before writing
+    # results
+    caller = dbotu.DBCaller(table.T, records,
         gen_crit, abund_crit, pval_crit, log=None, debug=None)
 
     # Call OTUs
     caller.run()
 
     # Get OTU table and sequences
-    dbotu_table = caller.otu_table()
+    # Need to transpose to get back into qiime format
+    dbotu_table = caller.otu_table().T
 
     # Write the representative sequences
     # First, initiate new object with type DNAFASTAFormat

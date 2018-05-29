@@ -27,7 +27,7 @@ From within a QIIME 2 [environment](https://docs.qiime2.org/2018.4/install/nativ
 
 ```
 qiime dbotu-q2 call-otus \
-	--i-table test_data/counts.transpose.qza \
+	--i-table test_data/counts.qza \
 	--i-sequences test_data/seq.qza \
 	--o-representative-sequences dbotu_seqs.qza \
 	--o-dbotu-table dbotu_table.qza
@@ -70,3 +70,8 @@ qiime tools import \
     - in the more distant future, perhaps there could even be a way to visualize that membership       
 
 _Small semantic note: the repo is called q2-dbotu to keep in line with other qiime 2 plugin repo names, but the function is called dbotu_q2 so that it (1) does not conflict with the existing pip package called `dbotu` and (2) shows up alphabetically under `dbotu` which is where I assume most mortal humans will be looking for it in the qiime plugin listings. Sorry for any confusion (and I assure you it has confused me more than you!)_
+
+# Versions
+
+* 2018.4.1 - fixed bug: transpose table before and after calling dbotu3, so that dbotu3 gets data in expected format (sequences in rows) despite input qiime2 format (sequences in columns)     
+* 2018.4.0 - original "working" plugin, uploaded to conda     
