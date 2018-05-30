@@ -9,7 +9,7 @@ To learn more about distribution-based clustering, check out the [original publi
 Distribution-based clustering is available on conda:
 
 ```
-conda install -c cduvallet dbotu_q2
+conda install -c cduvallet -c conda-forge dbotu_q2
 ```
 
 Note that you need the April 2018 QIIME 2 release (version `2018.4`) or later for this plugin to work.
