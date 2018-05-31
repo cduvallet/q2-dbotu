@@ -8,6 +8,7 @@
 
 import dbotu
 from Bio import SeqIO
+import sys
 
 import pandas as pd
 
@@ -65,6 +66,9 @@ def call_otus(table: pd.DataFrame,
     clustered_sequences = DNAFASTAFormat()
     # Pass it in to write_fasta as a file handle
     caller.write_fasta(open(str(clustered_sequences), 'w'))
+
+    # Print the membership (only shows up if --verbose flag is used)
+    caller.write_membership(sys.stdout)
 
     return dbotu_table, clustered_sequences
 

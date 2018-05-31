@@ -2,7 +2,7 @@
 
 QIIME 2 plugin for distribution-based clustering.
 
-To learn more about distribution-based clustering, check out the [original publication](http://dx.doi.org/10.1128/AEM.00342-13) or the [python implementation, dbOTU3](https://github.com/swo/dbotu3). This plugin is essentially a QIIME 2 wrapper around this new implementation.
+To learn more about distribution-based clustering, check out the [original publication](http://dx.doi.org/10.1128/AEM.00342-13) or the [python implementation, dbOTU3](https://github.com/swo/dbotu3) (and its [associated publication](https://doi.org/10.1371/journal.pone.0176335)). This plugin is essentially a QIIME 2 wrapper around this new implementation.
 
 # Installation
 
@@ -20,6 +20,13 @@ If that doesn't work, you can clone or download this repo to your computer, acti
 python setup.py install
 ```
 
+Once you install this plugin, it becomes part of the qiime distribution in the environment you're in (so you don't need to re-install it every time you re-activate the environment).
+If you install a new version of qiime, however, you'll need to re-install the plugin in that new environment.
+
+Also, if the plugin installation doesn't work for some reason (i.e. it installs, but throws an error if you try running it), note that this will likely "break" your entire qiime distribution as well.
+Basically, when you load up qiime it automatically tries to load up all installed plugins, and if one of those has an error then it will break the whole thing.
+If this happens, you can uninstall the q2-dbotu plugin from your qiime environment and your qiime should go back to working normally.
+
 # Usage
 
 Currently, the dbOTU plugin has only one function, the distribution-based OTU caller in `call-otus`.
@@ -33,6 +40,24 @@ qiime dbotu-q2 call-otus \
 	--o-dbotu-table dbotu_table.qza
 ```
 
+## Genetic, abundance, and p-value criteria parameters
+
+There are optional parameters that you can change to improve the performance of clustering.
+You can see these parameters by typing `qiime dbotu-q2 call-otus --help`, and you can learn more about how to choose them by reading the [original  publication](http://dx.doi.org/10.1128/AEM.00342-13) and the [dbotu3 update](https://doi.org/10.1371/journal.pone.0176335).
+Note that this plugin wraps the dbotu3 version of distribution-based clustering, which recommends using slightly different parameters than the original version.
+
+## Membership file
+
+Currently, the membership information can be printed using the `--verbose` flag.
+The first column of the membership file has the representative sequence for each OTU, and all subsequent columns have the sequences which are grouped into that OTU.
+If you want to see the membership file (which shows which sequences are grouped into which "OTU"), use the `--verbose` flag (and optionally pipe the output to a separate file):
+
+```
+qiime dbotu-q2 call-otus \
+    ...
+    --verbose > membership_file.txt
+```
+
 ## Data
 
 To run distribution-based clustering, you need (1) some dereplicated sequences and (2) a table of counts indicating how many times each of those sequences is in each of your samples.
@@ -43,7 +68,7 @@ Dereplicated sequences can be:
 - some other set of representative sequences, perhaps output from clustering with vsearch at a different identity threshold (e.g. 97% OTUs).
 
 The important thing is that the input sequence file contains only non-duplicated sequences (i.e. it is *not* just all the raw reads present in your dataset).
-The sequence IDs in the feature table should match the IDs in the input sequences file.
+The sequence IDs in the counts table should match the IDs in the input sequences file, and every sequence ID in your dereplicated sequences file must be present in the table.
 
 ### Using non-QIIME 2 artifact data
 
@@ -65,7 +90,7 @@ qiime tools import \
 # To do
 
 - output membership info          
-    - first attempt will be just to print membership to stdout     
+    - first attempt will be just to print membership to stdout [done]     
     - in the future, will want to define a new file format and write membership to that      
     - in the more distant future, perhaps there could even be a way to visualize that membership       
 
