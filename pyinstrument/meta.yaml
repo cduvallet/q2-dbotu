@@ -1,6 +1,6 @@
 package:
   name: dbotu_q2
-  version: 2018.4.1
+  version: 2018.4.2
 
 source:
   path: ../

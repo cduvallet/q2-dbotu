@@ -98,5 +98,6 @@ _Small semantic note: the repo is called q2-dbotu to keep in line with other qii
 
 # Versions
 
+* 2018.4.2 - output membership info with the `--verbose` flag      
 * 2018.4.1 - fixed bug: transpose table before and after calling dbotu3, so that dbotu3 gets data in expected format (sequences in rows) despite input qiime2 format (sequences in columns)     
 * 2018.4.0 - original "working" plugin, uploaded to conda     
