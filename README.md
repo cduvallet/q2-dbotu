@@ -12,9 +12,7 @@ Distribution-based clustering is available on conda:
 conda install -c cduvallet -c conda-forge dbotu_q2
 ```
 
-Note that you need the April 2018 QIIME 2 release (version `2018.4`) or later for this plugin to work.
-
-If that doesn't work, you can clone or download this repo to your computer, activate your qiime environment, and then run:
+If that doesn't work, you can clone or download this repo to your computer, _activate your qiime environment_, and then run:
 
 ```
 python setup.py install
@@ -22,6 +20,7 @@ python setup.py install
 
 Once you install this plugin, it becomes part of the qiime distribution in the environment you're in (so you don't need to re-install it every time you re-activate the environment).
 If you install a new version of qiime, however, you'll need to re-install the plugin in that new environment.
+Note that you need a 2019 QIIME 2 release (version `2019.1`) or later for this plugin to work.
 
 Also, if the plugin installation doesn't work for some reason (i.e. it installs, but throws an error if you try running it), note that this will likely "break" your entire qiime distribution as well.
 Basically, when you load up qiime it automatically tries to load up all installed plugins, and if one of those has an error then it will break the whole thing.
@@ -30,7 +29,7 @@ If this happens, you can uninstall the q2-dbotu plugin from your qiime environme
 # Usage
 
 Currently, the dbOTU plugin has only one function, the distribution-based OTU caller in `call-otus`.
-From within a QIIME 2 [environment](https://docs.qiime2.org/2018.4/install/native/#activate-the-conda-environment) (i.e. after doing `source activate qiime2-2018.4`), run:
+From within a QIIME 2 [environment](https://docs.qiime2.org/2019.1/install/native/#activate-the-conda-environment) (i.e. after doing `source activate qiime2-2019.1`), run:
 
 ```
 qiime dbotu-q2 call-otus \
@@ -44,6 +43,7 @@ qiime dbotu-q2 call-otus \
 
 There are optional parameters that you can change to improve the performance of clustering.
 You can see these parameters by typing `qiime dbotu-q2 call-otus --help`, and you can learn more about how to choose them by reading the [original  publication](http://dx.doi.org/10.1128/AEM.00342-13) and the [dbotu3 update](https://doi.org/10.1371/journal.pone.0176335).
+
 Note that this plugin wraps the dbotu3 version of distribution-based clustering, which recommends using slightly different parameters than the original version.
 
 ## Membership file
@@ -57,6 +57,8 @@ qiime dbotu-q2 call-otus \
     ...
     --verbose > membership_file.txt
 ```
+
+If you're using this plugin a lot and would like a different functionality for the membership info, get in touch by raising an issue or emailing me and we'll figure out how to best implement that.
 
 ## Data
 
@@ -98,6 +100,7 @@ _Small semantic note: the repo is called q2-dbotu to keep in line with other qii
 
 # Versions
 
+* 2019.1 - re-build package with Python 3.6 for newer versions of QIIME 2
 * 2018.4.2 - output membership info with the `--verbose` flag      
 * 2018.4.1 - fixed bug: transpose table before and after calling dbotu3, so that dbotu3 gets data in expected format (sequences in rows) despite input qiime2 format (sequences in columns)     
 * 2018.4.0 - original "working" plugin, uploaded to conda     

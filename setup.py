@@ -10,10 +10,10 @@ from setuptools import setup, find_packages
 
 setup(
     name="dbotu_q2",
-    version="0.0.1",
+    version="2019.1",
     packages=find_packages(),
     author="Claire Duvallet",
-    author_email="duvallet@mit.edu",
+    author_email="cduvallet@gmail.com",
     description="Distribution-based clustering",
     license='BSD-3-Clause',
     url="https://qiime2.org",
