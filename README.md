@@ -96,7 +96,10 @@ qiime tools import \
     - in the future, will want to define a new file format and write membership to that      
     - in the more distant future, perhaps there could even be a way to visualize that membership       
 
-_Small semantic note: the repo is called q2-dbotu to keep in line with other qiime 2 plugin repo names, but the function is called dbotu_q2 so that it (1) does not conflict with the existing pip package called `dbotu` and (2) shows up alphabetically under `dbotu` which is where I assume most mortal humans will be looking for it in the qiime plugin listings. Sorry for any confusion (and I assure you it has confused me more than you!)_
+## Notes
+
+- The repo is called q2-dbotu to keep in line with other qiime 2 plugin repo names, but the function is called dbotu_q2 so that it (1) does not conflict with the existing pip package called `dbotu` and (2) shows up alphabetically under `dbotu` which is where I assume most mortal humans will be looking for it in the qiime plugin listings. Sorry for any confusion (and I assure you it has confused me more than you!)    
+- The `call_otus()` function is basically just a QIIME 2-compatible wrapper for the `dbotu.DBCaller().run()` function in the dbotu package. The original dbotu package was available on pip, but now we have migrated it to conda to play more nicely with this package. The dbotu package source code is: https://github.com/almlab/dbotu3 . The conda package is available on anaconda.org: https://anaconda.org/cduvallet/dbotu .
 
 # Versions
 
