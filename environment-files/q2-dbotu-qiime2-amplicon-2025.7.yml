@@ -6,4 +6,4 @@ dependencies:
   - qiime2-amplicon
   - pip
   - pip:
-    - dbotu-q2@git+https://github.com/cduvallet/q2-dbotu.git@master
+    - q2-dbotu@git+https://github.com/cduvallet/q2-dbotu.git@master

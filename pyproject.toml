@@ -3,7 +3,7 @@ requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "dbotu_q2"
+name = "q2_dbotu"
 version = "2019.1"
 description = "Distribution-based clustering"
 authors = [
@@ -21,12 +21,12 @@ dependencies = [
 ]
 
 [project.entry-points."qiime2.plugins"]
-dbotu_q2 = "dbotu_q2.plugin_setup:plugin"
+q2_dbotu = "q2_dbotu.plugin_setup:plugin"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["dbotu_q2"]
+include = ["q2_dbotu"]
 
 [tool.setuptools.package-data]
-"dbotu_q2" = ["citations.bib"]
+"q2_dbotu" = ["citations.bib"]
 

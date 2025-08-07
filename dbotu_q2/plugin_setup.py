@@ -13,17 +13,17 @@ from q2_types.feature_table import FeatureTable, Frequency
 from q2_types.feature_data import FeatureData, Sequence
 
 # Import dbOTU functions
-import dbotu_q2
-from dbotu_q2._call_otus import call_otus
+import q2_dbotu
+from q2_dbotu._call_otus import call_otus
 
 cites = qiime2.plugin.Citations.load('citations.bib',
-    package='dbotu_q2')
+    package='q2_dbotu')
 
 plugin = qiime2.plugin.Plugin(
-    name='dbotu-q2',
-    version=dbotu_q2.__version__,
+    name='q2-dbotu',
+    version=q2_dbotu.__version__,
     website='http://www.github.com/cduvallet/q2-dbotu',
-    package='dbotu_q2',
+    package='q2_dbotu',
     citations=[cites['preheim2013dbotu1'], cites['olesen2017dbotu3']],
     description=('This QIIME 2 plugin calls OTUs using distribution-based '
                  'clustering.'),
