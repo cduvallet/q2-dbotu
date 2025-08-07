@@ -20,7 +20,7 @@ cites = qiime2.plugin.Citations.load('citations.bib',
     package='q2_dbotu')
 
 plugin = qiime2.plugin.Plugin(
-    name='q2-dbotu',
+    name='dbotu',
     version=q2_dbotu.__version__,
     website='http://www.github.com/cduvallet/q2-dbotu',
     package='q2_dbotu',
