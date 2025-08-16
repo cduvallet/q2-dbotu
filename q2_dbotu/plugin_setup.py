@@ -22,7 +22,7 @@ plugin = Plugin(
     package="q2_dbotu",
     description="Distribution-based clustering",
     short_description="Distribution-based clustering",
-    citations=[citations['olesen2017dbotu3']]
+    citations=[citations['preheim2013dbotu1'], citations['olesen2017dbotu3']]
 )
 
 # Register function to call dbOTUs
