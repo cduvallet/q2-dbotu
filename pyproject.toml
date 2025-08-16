@@ -8,6 +8,12 @@ readme = {file = "README.md", content-type = "text/markdown"}
 license = {file = "LICENSE"}
 dynamic = ["version"]
 
+dependencies = [
+    "dbotu",
+    "pandas",
+    "scikit-bio"
+]
+
 [project.urls]
 Homepage = "https://github.com/cduvallet/q2-dbotu"
 
