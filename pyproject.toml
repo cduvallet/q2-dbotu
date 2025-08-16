@@ -1,18 +1,12 @@
-[build-system]
-requires = ["setuptools>=61", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "dbotu_q2"
-version = "2019.1"
-description = "Distribution-based clustering"
+name = "q2-dbotu"
 authors = [
-    { name = "Claire Duvallet", email = "cduvallet@gmail.com" }
+    { name = "Claire Duvallet", email = "cduvallet@gmail.com"}
 ]
-license = { text = "MIT" }
-readme = "README.md"
-requires-python = ">=3.6"
-urls = { Homepage = "https://github.com/cduvallet/q2-dbotu" }
+description = "Distribution-based clustering"
+readme = {file = "README.md", content-type = "text/markdown"}
+license = {file = "LICENSE"}
+dynamic = ["version"]
 
 dependencies = [
     "dbotu",
@@ -20,13 +14,29 @@ dependencies = [
     "scikit-bio"
 ]
 
-[project.entry-points."qiime2.plugins"]
-dbotu_q2 = "dbotu_q2.plugin_setup:plugin"
+[project.urls]
+Homepage = "https://github.com/cduvallet/q2-dbotu"
+
+[project.entry-points.'qiime2.plugins']
+"q2-dbotu" = "q2_dbotu.plugin_setup:plugin"
+
+[build-system]
+requires = [
+    "setuptools",
+    "versioningit",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+version = {attr = "q2_dbotu._version.__version__"}
+
+[tool.setuptools]
+include-package-data = true
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["dbotu_q2"]
+include = ["q2_dbotu*"]
 
 [tool.setuptools.package-data]
-"dbotu_q2" = ["citations.bib"]
-
+q2_dbotu = ["**/*"]

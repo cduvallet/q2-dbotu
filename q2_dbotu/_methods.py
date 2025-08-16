@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------
-# Copyright (c) 2016--, Claire Duvallet.
+# Copyright (c) 2016, Claire Duvallet.
 #
 # Distributed under the terms of the Modified BSD License.
 #

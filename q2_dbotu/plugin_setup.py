@@ -1,38 +1,29 @@
 # ----------------------------------------------------------------------------
-# Copyright (c) 2016--, Claire Duvallet.
+# Copyright (c) 2016, Claire Duvallet.
 #
 # Distributed under the terms of the Modified BSD License.
 #
 # The full license is in the file LICENSE, distributed with this software.
 # ----------------------------------------------------------------------------
 
-
-import qiime2.plugin
-# Import QIIME 2 types
+from qiime2.plugin import Citations, Plugin, Float
 from q2_types.feature_table import FeatureTable, Frequency
 from q2_types.feature_data import FeatureData, Sequence
 
-# Import dbOTU functions
-import dbotu_q2
-from dbotu_q2._call_otus import call_otus
+from q2_dbotu import __version__
+from q2_dbotu._methods import call_otus
 
-cites = qiime2.plugin.Citations.load('citations.bib',
-    package='dbotu_q2')
+citations = Citations.load("citations.bib", package="q2_dbotu")
 
-plugin = qiime2.plugin.Plugin(
-    name='dbotu-q2',
-    version=dbotu_q2.__version__,
-    website='http://www.github.com/cduvallet/q2-dbotu',
-    package='dbotu_q2',
-    citations=[cites['preheim2013dbotu1'], cites['olesen2017dbotu3']],
-    description=('This QIIME 2 plugin calls OTUs using distribution-based '
-                 'clustering.'),
-    short_description='Plugin for distribution-based clustering.',
-    user_support_text=('Raise an issue on the github repo: https://github.com/cduvallet/q2-dbotu')
+plugin = Plugin(
+    name="dbotu",
+    version=__version__,
+    website="https://github.com/cduvallet/q2-dbotu",
+    package="q2_dbotu",
+    description="Distribution-based clustering",
+    short_description="Distribution-based clustering",
+    citations=[citations['preheim2013dbotu1'], citations['olesen2017dbotu3']]
 )
-
-
-#TODO: add output stats/membership file
 
 # Register function to call dbOTUs
 plugin.methods.register_function(
@@ -59,9 +50,9 @@ plugin.methods.register_function(
         'dbotu_table': 'Feature table with sample counts for dbOTUs.',
         'representative_sequences': 'Representative sequences for each dbOTU.'},
 
-    parameters={'gen_crit': qiime2.plugin.Float,
-                'abund_crit': qiime2.plugin.Float,
-                'pval_crit': qiime2.plugin.Float
+    parameters={'gen_crit': Float,
+                'abund_crit': Float,
+                'pval_crit': Float
     },
 
     parameter_descriptions={
